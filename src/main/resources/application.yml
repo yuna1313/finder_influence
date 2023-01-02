@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mariadb://mentoc.com:43206/shinhan_scool_lms_dump_20221209?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&allowMultiQueries=true
+    username: root
+    password: "!skyand2022"
