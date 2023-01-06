@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>test</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" ></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/1929a6e71a.js" crossorigin="anonymous"></script>
+<style>
+.swal-modal, .modal-content {
+	border-radius: 0px !important;
+}
+
+*:not(i) {
+	font-family: 'Noto Sans KR', sans-serif !important;
+}
+.like-card {
+	border-radius: 5px;
+	background-color: #ffffff;
+	margin-bottom: 30px;
+	-webkit-box-shadow: 2px 6px 15px 0px rgb(69 65 78 / 10%);
+	-moz-box-shadow: 2px 6px 15px 0px rgba(69, 65, 78, 0.1);
+	box-shadow: 2px 6px 15px 0px rgb(69 65 78 / 10%);
+	border: 0px;
+}
+.orange-ft {
+	color : #eb6101;
+}
+</style>
+
+<style>
+	/* ## login s ## */
+	* {
+		box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+	}
+	.wrapper-login {
+		background:#fff;
+		justify-content:end !important;
+	}
+	.wrapper-login::before,
+	.wrapper-login::after {
+		display:block;
+		content:"";
+		position:absolute;
+	}
+	.wrapper-login::before {
+		width:100%;
+		height:60vh;
+		left:0;
+		top:0;
+		background-size: auto 60vh;
+	}
+	.wrapper-login::after {
+		width:700px;
+		height:250px;
+		background-size:contain;
+		left:20px;
+		bottom:30%;
+	}
+	.login-cont {
+		position:relative;
+		z-index:5;
+		align-self:center;
+		max-width:1050px;
+		margin:0 auto;
+		transform:translateX(300px);
+		-webkit-transform:translateX(300px);
+	}
+	.login-box {
+		display:flex;
+		align-items:center;
+	}
+	.login-box .desc {
+		color:#212121;
+		font-size:16px;
+		padding-right:80px;
+		white-space:nowrap;
+	}
+	.login-box .img {
+		box-shadow:0 0 20px rgba(0,0,0,0.4);
+		-webkit-box-shadow:0 0 20px rgba(0,0,0,0.4);
+		border-radius:40px;
+		-webkit-border-radius:40px;
+		position:relative;
+		z-index:1;
+	}
+	.login-item {
+		padding:70px 60px;
+		background:#fff;
+		width:550px;
+		box-shadow:0 0 20px rgba(0,0,0,0.3);
+		-webkit-box-shadow:0 0 20px rgba(0,0,0,0.3);
+	}
+	.login-tit {
+		display:inline-block;
+		vertical-align:top;
+		font-size:24px;
+		font-weight:700;
+		color : #b30000;
+		letter-spacing:-0.3px;
+		padding-bottom:20px;
+		border-bottom:2px solid #b30000;
+		line-height:1.3;
+		margin-bottom:70px;
+	}
+	.login-sub-tit {
+		font-size:20px;
+		font-weight:600;
+		color : #b30000;
+		margin-bottom:10px;
+	}
+	.login-row {
+		display:flex;
+		align-items:end;
+		margin-bottom:10px;
+	}
+	.login-row .tit {
+		width:150px;
+		color:#737373;
+		font-size:14px;
+		position:relative;
+	}
+	.login-row .inp {
+		border:none;
+		border-bottom:1px solid #737373;
+		height:40px;
+		line-height:40px;
+		padding:0 10px;
+		width:100%;
+	}
+	.check-box {
+	    display: inline-block;
+	    vertical-align:middle;
+	}
+	.check-box .check {
+	    position: absolute;
+	    left: 0;
+	    top: 1px;
+	    width: 18px;
+	    height: 18px;
+	    opacity: .01;
+	}
+	.check-box .label {
+	    display: inline-block;
+	    vertical-align: top;
+	    position: relative;
+	    z-index: 10;
+	    color: #000;
+	}
+	.check-box .inp {
+	    display: block;
+	    position: absolute;
+	    left: 0;
+	    top: 1px;
+	    width: 18px;
+	    height: 18px;
+	    cursor: pointer;
+	    border: 2px solid #000;
+	    background:#000;
+	    border-radius: 100%;
+	    -webkit-border-radius: 100%;
+	}
+	.check-box .text {
+	    display: inline-block;
+	    vertical-align: top;
+	    padding-left: 27px;
+	    cursor: pointer;
+	    color:#000;
+	}
+	.check-box .check:checked + .inp:before {
+	    font-family: "Font Awesome 5 Free";
+	    font-weight: 700;
+	    content: "\f00c";
+	    color: #fff;
+	    position: absolute;
+	    left: 1px;
+	    top: -1px;
+	    font-size: 12px;
+	}
+	.login-check {
+		margin-top:30px;
+		text-align:right;
+	}
+	.btn-login {
+		display: inline-block;
+	    height:40px;
+	    line-height:38px;
+	    margin:0 0 0 20px;
+	    padding:0 20px;
+	    border:1px solid transparent;
+	    border-radius: 25px;
+	    -webkit-border-radius: 25px;
+	    min-width:120px;
+	    background : #b30000;
+	    color:#fff;
+	    cursor:pointer;
+	    font-size:15px;
+	}
+	.btn-login i {
+		margin-left:10px;
+		margin-top:-2px;
+		display:inline-block;
+		vertical-align:middle;
+		font-size:12px;
+	}
+	.new-pw-inp{
+		width : 100%;
+		border : 1px solid #ddd;
+		padding : 10px;
+	}
+	.important{
+		color : red;
+	}
+	/* ## login e ## */
+</style>
+
+<script>
+
+$(function() {
+	test();
+});
+
+function test() {
+	console.log('here');
+}
+
+</script>
+</head>
+<body class="login">
+	<header>
+		<h1>This is header</h1>
+	</header>
+	<div class="wrapper wrapper-login wrapper-login-full p-0" style="background: #545454;">
+		<div class="login-cont">
+			<div class="login-box">
+				<div class="login-item">
+					<form id="loginFrm" th:action="@{/login/mgmt}" method="post">
+						<h1 class="login-tit">스카이앤드 유지보수 시스템</h1>
+						<h2 class="login-sub-tit">Login Manager</h2>
+						<div class="login-row">
+							<div class="tit">* 사원 아이디</div>
+							<input type="text" class="inp" title="아이디 입력" id="username" name="username" required>
+						</div>
+						<div class="login-row">
+							<div class="tit">* 비밀번호</div>
+							<input id="password" name="password" type="password" class="inp" required title="비밀번호 입력" onkeyup="enterkey();">
+						</div>
+					</form>
+						<div class="login-check">
+							<div class="check-box">
+								<label class="label">
+									<input type="checkbox" class="check" id="rememberme">
+									<span class="inp"></span>
+									<span class="text">아이디 저장</span>
+								</label>
+							</div>
+							<button type="button" class="btn-login" onclick="login();">로그인<i class="fas fa-chevron-right"></i></button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
